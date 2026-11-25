@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Cafe11 {
     public static void Menu(String customerName, boolean isMember) {
         System.out.println("Welcome, " + customerName + "!");
@@ -16,7 +18,26 @@ public class Cafe11 {
         System.out.println("Please choose the menu you would like.");       
     }
 
+    public static int calculateTotalPrice11(int menuChoice, int itemCount) {
+        int[] itemPrices = {15000, 20000, 22000, 12000, 10000, 18000};
+
+        int totalPrice = itemPrices[menuChoice - 1] * itemCount;
+        return totalPrice;
+    }
+
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         Menu("Andi", true);
+
+        System.out.print("\nEnter the menu number you want to order: ");
+        int menuChoice = sc.nextInt();
+        System.out.print("\nEnter the number of items you want to order: ");
+        int itemCount = sc.nextInt();
+
+        int totalPayment = calculateTotalPrice11(menuChoice, itemCount);
+
+        System.out.println("Total price fo your order: Rp" + totalPayment);
+
+        sc.close();
     }
 }
